@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+<link href='https://fonts.googleapis.com/css?family=Albert Sans' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+        integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+        integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <!-- for styling -->
+    <style>
+	body {
+    	  background-color: #2e3440;
+	}
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+  
+        input[type="text"] {
+            padding: 30px 30px;
+	        font-family: 'Comfortaa';
+            font-weight: 1000;
+            font-size: 40px;
+            background-color: #2e3440;
+            color: #fff;
+            border: 5px solid ;
+            border-color: #fff;
+            border-radius: 75px;
+        }
+    </style>
+</head>
+<!-- create table -->
+  
+<body>
+    <table id="calcu">
+        <thead><br><br><br><br><br><p style="font-size: 40px; font-family: 'Comfortaa'; font-weight: 1000; color: #fff; text-align: center;">Enter any expression ↘</p></thead>
+        <tr>
+            <td colspan="4"><input type="text" id="result"></td></tr>
+            <tr>
+            <td><p style="font-size: 40px; font-family: 'Comfortaa'; color: #fff; font-weight: 1000; text-align: center;">Click on enter once done...</p></td></tr>
+            <tr>
+            <td><br><br><br><br><br><br><p style="font-size: 22px; font-family: 'Comfortaa'; color: #eb4848; font-weight: 750; text-align: center;">NOTE: Do not enter complex mathematical equations.<br>&nbsp&nbsp&nbsp&nbspThis calculator can work upto scientific equations...</p></td></tr>
+        </table>
+  
+    <script>
+        // Function that display value
+        function dis(val) {
+            document.getElementById("result").value += val
+        }
+  
+        function myFunction(event) {
+            if (event.key == '0' || event.key == '1' 
+                || event.key == '2' || event.key == '3'
+                || event.key == '4' || event.key == '5' 
+                || event.key == '6' || event.key == '7'
+                || event.key == '8' || event.key == '9' 
+                || event.key == '+' || event.key == '-'
+                || event.key == '*' || event.key == '/')
+                document.getElementById("result").value += event.key;
+        }
+  
+        var cal = document.getElementById("calcu");
+        cal.onkeyup = function (event) {
+            if (event.keyCode === 13) {
+                console.log("Enter");
+                let x = document.getElementById("result").value
+                console.log(x);
+                solve();
+            }
+        }
+  
+        // Function that evaluates the digit and return result
+        function solve() {
+            let x = document.getElementById("result").value
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        }
+  
+        // Function that clear the display
+        function clr() {
+            document.getElementById("result").value = ""
+        }
+    </script>
+</body>
+  
+</html>
